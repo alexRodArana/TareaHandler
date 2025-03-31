@@ -1,10 +1,13 @@
 import express from 'express';
+import TweetHttpHandler from '../handlers/tweet'
 
 const router  = express.Router();
 
-router.get('/', getTweets);
-router.get('/:id', getTweetById);
-router.put('/:id', updateTweet);
-router.delete('/:id', deleteTweet);
+const tweetHttpHandler = new TweetHttpHandler();
+
+router.get('/', tweetHttpHandler.getTweets);
+router.get('/:id', tweetHttpHandler.getTweetById);
+router.put('/:id', tweetHttpHandler.updateTweet);
+router.delete('/:id', tweetHttpHandler.deleteTweet);
 
 export default router;

@@ -1,10 +1,13 @@
 import express from 'express';
+import UserHttpHandler from '../handlers/user'
 
 const router  = express.Router();
 
-router.get('/', getUsers);
-router.get('/:id', getUserById);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+const userHttpHandler = new UserHttpHandler();
+
+router.get('/', userHttpHandler.getUsers);
+router.get('/:id', userHttpHandler.getUserById);
+router.put('/:id', userHttpHandler.updateUser);
+router.delete('/:id', userHttpHandler.deleteUser);
 
 export default router;
