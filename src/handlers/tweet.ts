@@ -1,5 +1,5 @@
-import {  Request, Response, NextFunction } from 'express';
-import TweetController from '../controllers/tweet'
+import { Request, Response, NextFunction } from 'express';
+import TweetController from '../controllers/tweet';
 
 const tweetController = new TweetController();
 
@@ -8,23 +8,27 @@ class TweetHttpHandler {
     async getTweets(request: Request, response: Response, next: NextFunction) {
         try {
             const tweets = await tweetController.getAllTweets();
-            response.json(tweets)
+            response.json(tweets);
         } catch (error) {
-            next(error)
+            next(error);
         }
     }
 
-    async getTweetById(request: Request, response: Response, next: NextFunction) {
-        
+    async getEvenTweets(request: Request, response: Response, next: NextFunction) {
+        try {
+            const tweets = await tweetController.getAllTweets();
+            const evenTweets = tweets.filter((num: number) => num % 2 === 0);
+            response.json(evenTweets);
+        } catch (error) {
+            next(error);
+        }
     }
 
-    async updateTweet(request: Request, response: Response, next: NextFunction) {
-        
-    }
+    async getTweetById(request: Request, response: Response, next: NextFunction) {}
 
-    async deleteTweet(request: Request, response: Response, next: NextFunction) {
-        
-    }
+    async updateTweet(request: Request, response: Response, next: NextFunction) {}
+
+    async deleteTweet(request: Request, response: Response, next: NextFunction) {}
 
 }
 
