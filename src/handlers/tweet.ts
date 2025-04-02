@@ -14,16 +14,6 @@ class TweetHttpHandler {
         }
     }
 
-    async getEvenTweets(request: Request, response: Response, next: NextFunction) {
-        try {
-            const tweets = await tweetController.getAllTweets();
-            const evenTweets = tweets.filter((num: number) => num % 2 === 0);
-            response.json(evenTweets);
-        } catch (error) {
-            next(error);
-        }
-    }
-
     async getTweetById(request: Request, response: Response, next: NextFunction) {}
 
     async updateTweet(request: Request, response: Response, next: NextFunction) {}

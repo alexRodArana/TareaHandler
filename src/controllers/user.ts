@@ -1,6 +1,6 @@
 class UserController {
     async getAllUsers() {
-        
+        return [];
     }
 }
 

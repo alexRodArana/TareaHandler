@@ -1,8 +1,7 @@
 import express from 'express';
-import UserHttpHandler from '../handlers/user'
+import UserHttpHandler from '../handlers/user';
 
-const router  = express.Router();
-
+const router = express.Router();
 const userHttpHandler = new UserHttpHandler();
 
 router.get('/', userHttpHandler.getUsers);
